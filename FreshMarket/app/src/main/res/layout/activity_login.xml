@@ -92,6 +92,7 @@
         android:background="@drawable/shpbutton"
         android:gravity="center"
         android:text="Create New Account?"
+        android:onClick="goToRegister"
         android:textColor="#ffff"
         android:textSize="24sp"
         android:textStyle="bold"
