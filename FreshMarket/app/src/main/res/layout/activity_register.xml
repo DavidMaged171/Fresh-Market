@@ -7,7 +7,7 @@
     tools:context=".RegisterActivity">
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/txtphone"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="9dp"
@@ -18,13 +18,13 @@
         android:gravity="center"
         android:hint="Phone"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/txtemail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtname" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/txtname"
         android:layout_width="393dp"
         android:layout_height="55dp"
         android:layout_marginStart="10dp"
@@ -35,13 +35,13 @@
         android:gravity="center"
         android:hint="Full Name"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
+        app:layout_constraintBottom_toTopOf="@+id/txtphone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress"
+        android:id="@+id/txtemail"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="9dp"
@@ -52,13 +52,13 @@
         android:gravity="center"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName3"
+        app:layout_constraintBottom_toTopOf="@+id/txtaddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+        app:layout_constraintTop_toBottomOf="@+id/txtphone" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/txtaddress"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="9dp"
@@ -70,13 +70,13 @@
         android:hint="Address"
         android:inputType="textPersonName"
         android:lines="5"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword2"
+        app:layout_constraintBottom_toTopOf="@+id/txtpassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+        app:layout_constraintTop_toBottomOf="@+id/txtemail" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/txtpassword"
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginStart="9dp"
@@ -87,13 +87,13 @@
         android:gravity="center"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/btnregister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/txtaddress" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnregister"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="9dp"
@@ -102,6 +102,7 @@
         android:background="@drawable/shpbutton"
         android:gravity="center"
         android:text="Register"
+        android:onClick="register"
         android:textAllCaps="false"
         android:textColor="#ffff"
         android:textSize="24sp"
@@ -109,7 +110,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+        app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -117,7 +118,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
+        app:layout_constraintBottom_toTopOf="@+id/txtname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
