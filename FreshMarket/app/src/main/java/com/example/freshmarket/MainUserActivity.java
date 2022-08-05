@@ -1,5 +1,6 @@
 package com.example.freshmarket;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -11,6 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -83,6 +85,25 @@ public class MainUserActivity extends AppCompatActivity {
         {
             getSharedPreferences("Fresh",MODE_PRIVATE).edit().clear().commit();
             startActivity(new Intent(MainUserActivity.this,LoginActivity.class));
+        }
+        else if(id==R.id.action_delete)
+        {
+            AlertDialog.Builder builder=new AlertDialog.Builder(MainUserActivity.this)
+                    .setTitle("Delete Account...")
+                    .setMessage("Are you sure delete your account?")
+                    .setPositiveButton("No",null)
+                    .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Database db=new Database();
+                            db.ConnectDB();
+                            db.RunDML("delete from users where UserID = '"+LoginActivity.id+"'");
+                            getSharedPreferences("Fresh",MODE_PRIVATE).edit().clear().commit();
+                            startActivity(new Intent(MainUserActivity.this,LoginActivity.class));
+                        }
+                    });
+            builder.create().show();
+
         }
 
         return super.onOptionsItemSelected(item);

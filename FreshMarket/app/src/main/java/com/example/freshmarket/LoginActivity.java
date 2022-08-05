@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LoginActivity extends AppCompatActivity {
+    public static String id=null;
     EditText txtuser,txtpassword;
     CheckBox chkremeber;
 
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
         SharedPreferences sh=getSharedPreferences("Fresh",MODE_PRIVATE);
         String name=sh.getString("name",null);
+        id=sh.getString("name",null);
         if (name!=null)
             startActivity(new Intent(LoginActivity.this,MainUserActivity.class));
 
@@ -76,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                                 .edit().putString("id",rs.getString(1)).putString("name",rs.getString(2))
                                 .commit();
                             }
+                            id=rs.getString(1);
                             startActivity(new Intent(LoginActivity.this,MainUserActivity.class ));
 
                         }
