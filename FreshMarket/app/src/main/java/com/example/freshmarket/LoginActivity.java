@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -15,6 +16,16 @@ import android.widget.Toast;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
+import java.util.Random;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class LoginActivity extends AppCompatActivity {
     public static String id=null;
@@ -105,5 +116,84 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void forgetPassword(View view) {
+        LayoutInflater inflater=LayoutInflater.from(LoginActivity.this);
+        View v=inflater.inflate(R.layout.forgetpassword,null);
+        AlertDialog.Builder ad=new AlertDialog.Builder(LoginActivity.this);
+
+
+        EditText txtfEmail=(EditText) v.findViewById(R.id.txtfmail );
+        Toast.makeText(LoginActivity.this,"Forget password clicked",Toast.LENGTH_SHORT).show();
+
+        ad.setView(v);
+        ad.setPositiveButton("Send Verification Code", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Database db=new Database();
+                db.ConnectDB();
+                ResultSet rs=db.RunSearch("select * from users where email = '"+ txtfEmail.getText()+"'");
+                try {
+                    if(rs.next())
+                    {
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    final String username = "freshmarket171@gmail.com";
+                                    final String password = "ABC@123456";
+                                    Properties props = new Properties();
+                                    props.put("mail.smtp.auth", "true");
+                                    props.put("mail.smtp.starttls.enable", "true");
+                                    props.put("mail.smtp.host", "smtp.gmail.com");
+                                    props.put("mail.smtp.port", "587");
+
+                                    Session session = Session.getInstance(props,
+                                            new javax.mail.Authenticator() {
+
+                                                protected PasswordAuthentication getPasswordAuthentication() {
+                                                    return new PasswordAuthentication(username, password);
+                                                }
+                                            });
+
+                                    try {
+                                        Message message = new MimeMessage(session);
+                                        message.setFrom(new InternetAddress("yourmobileapp2017@gmail.com"));
+                                        message.setRecipients(Message.RecipientType.TO,
+                                                InternetAddress.parse(txtfEmail.getText().toString()));
+
+                                        message.setSubject("Forget password code Fresh Market App");
+
+                                        Random rand=new Random();
+                                        int newpass=rand.nextInt(99999-11111+1)+11111;
+
+                                        message.setText("Dear : " + rs.getString(2).toString() + "\n" + "Verification Code: " + newpass + "\n" + "Thanks :) ");
+                                        Transport.send(message);
+
+
+                                    } catch (MessagingException e) {
+                                        Toast.makeText(getApplication(), e.getMessage() + "", Toast.LENGTH_SHORT).show();
+                                        throw new RuntimeException(e);
+                                    }
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
+                            }
+                        }).start();
+
+                        Toast.makeText(LoginActivity.this, "Verification code has been sent", Toast.LENGTH_SHORT).show();
+
+                    }
+                    else{
+                        Toast.makeText(LoginActivity.this,"This email not exists",Toast.LENGTH_SHORT).show();
+                    }
+                }catch (SQLException ex)
+                {
+                    ex.printStackTrace();
+                }
+            }
+        }).setNegativeButton("Thanks",null);
+        ad.create().show();
     }
 }
