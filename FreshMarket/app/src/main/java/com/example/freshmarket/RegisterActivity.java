@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(this,"NO Internet Connection",Toast.LENGTH_SHORT).show();
             }
             else{
-                String msg=db.RunDML("insert into [users] values(N'"+txtname.getText()+"','"+txtphone.getText()+"','"+txtemail.getText()+"','"+txtaddress.getText()+"','"+txtpassword.getText()+"')");
+                String msg=db.RunDML("insert into [users] values(N'"+txtname.getText()+"','"+txtphone.getText()+"','"+txtemail.getText()+"','"+txtaddress.getText()+"','"+txtpassword.getText()+"','')");
                 if(msg.equals("Ok"))
                 {
                     AlertDialog.Builder AD=new AlertDialog.Builder(RegisterActivity.this)

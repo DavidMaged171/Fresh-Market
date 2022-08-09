@@ -7,6 +7,8 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -20,6 +22,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainUserActivity extends AppCompatActivity {
 
@@ -50,6 +54,13 @@ public class MainUserActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        View headerView=navigationView.getHeaderView(0);
+        ImageView imgUser=headerView.findViewById(R.id.imguser);
+        TextView txtUser=headerView.findViewById(R.id.txtuser);
+        txtUser.setText(LoginActivity.name);
+        PicassoClient.downloadImage(this,LoginActivity.image,imgUser);
+
     }
 
     @Override

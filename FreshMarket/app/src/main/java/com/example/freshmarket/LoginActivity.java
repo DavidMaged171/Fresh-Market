@@ -28,7 +28,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class LoginActivity extends AppCompatActivity {
-    public static String id=null;
+    public static String id=null,name,image;
     EditText txtuser,txtpassword;
     CheckBox chkremeber;
 
@@ -89,7 +89,9 @@ public class LoginActivity extends AppCompatActivity {
                                 .edit().putString("id",rs.getString(1)).putString("name",rs.getString(2))
                                 .commit();
                             }
+                            name=rs.getString(2);
                             id=rs.getString(1);
+                            image=rs.getString(7);
                             startActivity(new Intent(LoginActivity.this,MainUserActivity.class ));
 
                         }

@@ -38,7 +38,7 @@
         app:layout_constraintBottom_toTopOf="@+id/txtphone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imguser" />
 
     <EditText
         android:id="@+id/txtemail"
@@ -113,7 +113,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtpassword" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imguser"
         android:layout_width="93dp"
         android:layout_height="0dp"
         android:layout_marginTop="60dp"
