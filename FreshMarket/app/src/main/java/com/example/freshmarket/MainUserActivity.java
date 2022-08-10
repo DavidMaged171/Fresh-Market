@@ -116,6 +116,10 @@ public class MainUserActivity extends AppCompatActivity {
             builder.create().show();
 
         }
+        else if(id==R.id.action_profile)
+        {
+            startActivity(new Intent(MainUserActivity.this,MapsActivity.class));
+        }
 
         return super.onOptionsItemSelected(item);
     }
