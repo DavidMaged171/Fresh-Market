@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="master.Master.cs" Inherits="AdminWebApp.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 602px;
+            height: 450px;
+        }
+        .auto-style2 {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <div style="text-align: center">
+            <div style="font-weight: 700; text-align: center; font-size: x-large; color: #FFFFFF; background-color: #339933" title=" :: ">
+                <br />
+                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/index.aspx" CssClass="auto-style2">Home</asp:HyperLink>
+                &nbsp;::
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/WebForm2.aspx" CssClass="auto-style2">Users</asp:HyperLink>
+                &nbsp;::
+                <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Department.aspx" CssClass="auto-style2">Department</asp:HyperLink>
+                &nbsp;::
+                <asp:HyperLink ID="HyperLink4" runat="server">Products</asp:HyperLink>
+                &nbsp;::
+                <asp:HyperLink ID="HyperLink5" runat="server">Orders</asp:HyperLink>
+                &nbsp;::
+                <asp:HyperLink ID="HyperLink6" runat="server">Branches</asp:HyperLink>
+                &nbsp;::
+                <asp:HyperLink ID="HyperLink7" runat="server">Rating</asp:HyperLink>
+                <br />
+                <br />
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                
+                <p>
+                    <img alt="" class="auto-style1" src="logo.png" /></p>
+                
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

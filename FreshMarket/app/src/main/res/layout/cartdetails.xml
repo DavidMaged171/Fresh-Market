@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+
+    android:background="@drawable/shptext"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/imgdcart"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/txtcartqty"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.14"
+        app:srcCompat="@drawable/logo3" />
+
+    <TextView
+        android:id="@+id/txtnamecart"
+        android:layout_width="79dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="128dp"
+        android:text="TextView"
+
+        android:textSize="20sp"
+
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtpricecart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="4dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/txtnamecart"
+        app:layout_constraintTop_toBottomOf="@+id/txtnamecart" />
+
+    <TextView
+        android:id="@+id/txtcarttotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="49dp"
+        android:layout_marginBottom="20dp"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imgdelete"
+        app:layout_constraintStart_toEndOf="@+id/imgdcart"
+        app:layout_constraintTop_toBottomOf="@+id/txtcartqty"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/txtcartqty"
+        android:layout_width="105dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="115dp"
+        android:layout_marginBottom="1dp"
+        android:ems="10"
+        android:text="TextView"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imgdelete"
+        app:layout_constraintEnd_toStartOf="@+id/txtnamecart"
+        app:layout_constraintStart_toEndOf="@+id/imgdcart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgdelete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtcarttotal"
+        app:layout_constraintTop_toBottomOf="@+id/txtcartqty"
+        app:srcCompat="@drawable/delete" />
+</androidx.constraintlayout.widget.ConstraintLayout>

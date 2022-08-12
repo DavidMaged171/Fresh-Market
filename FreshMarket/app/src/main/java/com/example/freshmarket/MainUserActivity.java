@@ -10,11 +10,19 @@ import android.view.Menu;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.freshmarket.ui.gallery.GalleryFragment;
+import com.example.freshmarket.ui.home.HomeFragment;
+import com.example.freshmarket.ui.slideshow.SlideshowFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.GravityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -61,6 +69,47 @@ public class MainUserActivity extends AppCompatActivity {
         txtUser.setText(LoginActivity.name);
         PicassoClient.downloadImage(this,LoginActivity.image,imgUser);
 
+
+        Menu menu=navigationView.getMenu();
+        MenuItem cart=menu.findItem(R.id.nav_cart);
+        DBLite dbLite=new DBLite(MainUserActivity.this);
+        int count =dbLite.getCount();
+        if(count==0)
+        {
+            cart.setVisible(false);
+        }
+        else
+        {
+            cart.setVisible(true);
+            cart.setTitle("Shopping Cart ( "+count+" )");
+        }
+        //loadFragment(new HomeFragment());
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id=menuItem.getItemId();
+                if(id==R.id.nav_home)
+                {
+                    GalleryFragment f1=new GalleryFragment();
+                    getSupportFragmentManager().beginTransaction().add(R.id.frame,f1).commit();
+                    //loadFragment(new HomeFragment());
+                }
+                else if(id==R.id.nav_gallery)
+                {
+                    SlideshowFragment f1=new SlideshowFragment();
+                    getSupportFragmentManager().beginTransaction().add(R.id.frame,f1).commit();
+                    //loadFragment(new GalleryFragment());
+                }
+                else if(id==R.id.nav_slideshow)
+                {
+                    HomeFragment f1=new HomeFragment();
+                    getSupportFragmentManager().beginTransaction().add(R.id.frame,f1).commit();
+                }
+                    //loadFragment(new SlideshowFragment());
+                drawer.closeDrawer(GravityCompat.START);
+                return false;
+            }
+        });
     }
 
     @Override
@@ -123,5 +172,13 @@ public class MainUserActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void loadFragment(Fragment fragment)
+    {
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame,fragment);
+        transaction.commit();
+    }
+
 
 }
